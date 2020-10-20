@@ -408,7 +408,7 @@
 }
 
 .slick-loading .slick-list {
-  background: #fff url(../../img/ajax-loader.gif) 50% no-repeat;
+  background: #fff url(../../img/Spinner-1s-200px.svg) 50% no-repeat;
 }
 
 .slick-next:before {
