@@ -2,7 +2,7 @@
 
 ## `Тестовая работа от interdex.ru`
 
-[Ссылка](https://darthdanius.github.io/Testwork-interdex.ru/build/), [Репозиторий](https://github.com/darthdanius/Testwork-interdex.ru)
+[Ссылка](https://darthdanius.github.io/Testwork-interdex.ru/build/), [Репозиторий](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Testwork-interdex.ru)
 
 ## `Коммерческий проект. Тема wordpress`
 
@@ -22,16 +22,16 @@
 
 ### `Виджет комментариев на React`
 
-[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Comments/build/)
+[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Comments/build/)
 
 ### `Браузерный текстовый редактор`
 
-[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Editor/)
+[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Editor/)
 
 ### `Приложение "Список дел"`
 
-[Ссылка](https://darthdanius.github.io/Homework-Skillbox-todoApp/)
+[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-todoApp/)
 
 ### `Кнопки Счетчики на замыкании`
 
-[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Counter/build/)
+[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Counter/build/)

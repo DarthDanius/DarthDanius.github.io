@@ -10,7 +10,7 @@ const NODE_ENV = JSON.stringify(process.env.NODE_ENV);
 const fs = require('fs');
 
 const PATHS = {
-  dist: path.resolve(__dirname, 'Interdex.ru'),
+  dist: path.resolve(__dirname, 'build'),
   src: path.resolve(__dirname, 'src'),
   scripts: 'scripts',
   styles: 'styles',
