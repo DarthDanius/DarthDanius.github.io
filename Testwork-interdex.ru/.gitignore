@@ -7,3 +7,4 @@ sftp.json
 package-lock.json
 design
 info.txt
+.gitignore

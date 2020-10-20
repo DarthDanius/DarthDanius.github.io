@@ -22,16 +22,16 @@
 
 ### `Виджет комментариев на React`
 
-[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Comments/build/)
+[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Comments/build/)
 
 ### `Браузерный текстовый редактор`
 
-[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Editor/)
+[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Editor/)
 
 ### `Приложение "Список дел"`
 
-[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-todoApp/)
+[Ссылка](https://darthdanius.github.io/Homework-Skillbox-todoApp/)
 
 ### `Кнопки Счетчики на замыкании`
 
-[Ссылка](https://github.com/DarthDanius/DarthDanius.github.io/tree/master/Homework-Skillbox-Counter/build/)
+[Ссылка](https://darthdanius.github.io/Homework-Skillbox-Counter/build/)
