@@ -1,0 +1,286 @@
+@import "../../style/variables.scss";
+
+.section-welcome {
+
+    &__cont {
+      background-image: url($public-path + '/img/bg_section_welcome.jpg');
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: cover;
+    }
+
+    &__header {
+      background-color: transparent;
+    }
+
+    &__title {
+      text-align: center;
+      margin: 0 auto;
+      margin-top: 134px;
+      color: $color-text-light-02;
+      letter-spacing: 0.02em;
+
+      @media (max-width: $breakpoint-02-5) {
+        margin-top: 110px;
+      }
+
+      @media (max-width: $breakpoint-05) {
+        width: 100%;
+      }
+    }
+
+    &__btn-consultation {
+      margin: auto;
+      margin-top: 40px;
+      display: block;
+
+      @media (max-width: $breakpoint-02-5) {
+        margin-top: 25px;
+      }
+    }
+
+    &__advantages{
+      margin-top: 126px;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      left: 0;
+      bottom: -30px;
+
+      @media (max-width: $breakpoint-02-5) {
+        margin-top: 105px;
+      }
+    }
+}
+
+.section-about-me {
+  
+  &__cont {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+
+    @media (max-width: $breakpoint-04) {
+      flex-direction: column;
+    }
+  }
+
+  &__avatar {
+    padding-top: 40px;
+    max-width: 55%;
+    margin-left: -5%;
+    position: relative;
+    bottom: 0;
+    left: -15px;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: 26px;
+    }
+
+    @media (max-width: $breakpoint-04) {
+      order: 2;
+      margin-left: 0;
+      left: 0;
+      right: 0;
+    }
+
+    @media (max-width: $breakpoint-06) {
+      max-width: 100%;
+      padding-top: 0;
+    }
+  }
+  
+  &__avatar-image {
+    width: 100%;
+    display: block;
+  }
+  
+  &__article {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-top: 115px;
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: 80px;
+    }
+
+    @media (max-width: $breakpoint-04) {
+      width: 100%;
+    }
+    
+  }
+  
+  &__article-body p,
+  &__article-text {
+    font-family: BravoRG;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.1428em;
+    letter-spacing: 0.04em;
+    color: $color-text-dark-01;
+    text-indent: 50px;
+  }
+
+  &__article-link {
+    margin-top: 29px;
+    align-self: flex-start;
+
+    @media (max-width: $breakpoint-02-5) {
+      margin-top: 16px;
+    }
+
+    @media (max-width: $breakpoint-04) {
+      align-self: flex-end;
+    }
+  }
+}
+
+.section-services {
+
+  &__cont {
+    padding-top: $pad-top-01;
+    padding-bottom: 159px;
+    background-image: url($public-path + '/img/bg_section_service.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+
+    @media (max-width: $breakpoint-03) {
+      padding-bottom: $pad-top-01;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: $pad-top-02;
+      padding-bottom: 108px;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      padding-top: $pad-top-04;
+    }
+  }
+
+  &__title {
+    color: $color-text-light-01;
+    text-align: center;
+  }
+
+  &__service-list {
+    @media (max-width: $breakpoint-03) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__service-icon {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+  }
+}
+
+.section-documents {
+  
+  &__cont {
+    padding-top: $pad-top-01;
+    padding-bottom: $pad-top-01;
+    background-color: $color-main-03;
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: $pad-top-02;
+      padding-bottom: $pad-top-02 - 4px;
+
+    }
+
+    @media (max-width: $breakpoint-05) {
+      padding-top: $pad-top-04;
+    }
+  }
+
+  &__slider {
+    margin-top: 50px;
+
+    @media (max-width: $breakpoint-02-5) {
+      margin-top: 33px;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      margin-top: 23px;
+    }
+  }
+}
+
+.section-promo {
+
+  &__cont {
+    padding-top: 66px;
+    padding-bottom: 69px;
+    background-image: url($public-path + '/img/bg_section_promo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: 44px;
+      padding-bottom: 46px;
+    }
+  }
+
+  &__title {
+    font-family: BravoRG;
+    letter-spacing: .04em;
+    color: $color-text-light-02;
+
+    @media (max-width: $breakpoint-02-5) {
+      letter-spacing: .035em;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      text-align: center;
+    }
+
+    @media (max-width: $breakpoint-06) {
+    }
+  }
+
+  &__marker {
+    color: $color-main-02;
+  }
+
+  &__form {
+    margin-top: 35px;
+
+    @media (max-width: $breakpoint-02-5) {
+      margin-top: 22px;
+    }
+  }
+}
+
+.section-articles {
+
+  &__cont {
+    background-color: $color-main-03;
+    padding-top: $pad-top-01;
+    padding-bottom: 160px;
+
+    @media (max-width: $breakpoint-03) {
+      padding-bottom: 50px;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: $pad-top-02;
+      padding-bottom: 108px;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      padding-top: $pad-top-04;
+    }
+  }
+
+  &__articles {
+
+    @media (max-width: $breakpoint-03) {
+      flex-wrap: wrap;
+    }
+  }
+}
+

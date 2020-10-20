@@ -1,0 +1,184 @@
+.section-text__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-text__title {
+  width: 100%;
+}
+
+.section-text__article-body p,
+.section-text__article-text {
+  color: #fff;
+  font-family: BravoRG;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: .04em;
+}
+
+.section-text__subtitle {
+  margin-top: 157px;
+  margin-right: 100%;
+}
+
+.section-articles__cont {
+  background-color: #404040;
+  padding-top: 100px;
+  padding-bottom: 160px;
+}
+
+.section-slider__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-slider__slider {
+  width: 100%;
+  margin-top: 77px;
+}
+
+.section-slider__slide {
+  background-image: url(../img/document_01.jpg);
+}
+
+.section-slider__slide:after {
+  padding-top: 91%;
+}
+
+.section-how-work__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-how-work__title {
+  margin-top: 57px;
+}
+
+.section-how-work__graf {
+  margin-top: 50px;
+}
+
+.section-advice__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-advice__title {
+  margin-top: 10px;
+}
+
+.section-advice__form {
+  margin-top: 20px;
+  margin-bottom: 27px;
+}
+
+@media (max-width: 1559px) {
+  .section-text__cont {
+    padding-top: 85px;
+  }
+
+  .section-text__cont {
+    padding-top: 70px;
+  }
+
+  .section-text__article-body p,
+  .section-text__article-text {
+    font-size: 24.4px;
+  }
+
+  .section-articles__cont {
+    padding-top: 146px;
+    padding-bottom: 108px;
+  }
+
+  .section-slider__cont {
+    padding-top: 85px;
+  }
+
+  .section-slider__cont {
+    padding-top: 70px;
+  }
+
+  .section-how-work__cont {
+    padding-top: 85px;
+  }
+
+  .section-how-work__cont {
+    padding-top: 70px;
+  }
+
+  .section-advice__cont {
+    padding-top: 85px;
+  }
+
+  .section-advice__cont {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 1275px) {
+  .section-text__article-body p,
+  .section-text__article-text {
+    font-size: 22.8px;
+  }
+
+  .section-articles__cont {
+    padding-bottom: 50px;
+  }
+
+  .section-articles__articles {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section-text__cont {
+    padding-top: 50px;
+  }
+
+  .section-text__article-body p,
+  .section-text__article-text {
+    font-size: 21.2px;
+  }
+
+  .section-slider__cont {
+    padding-top: 50px;
+  }
+
+  .section-how-work__cont {
+    padding-top: 50px;
+  }
+
+  .section-advice__cont {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 790px) {
+  .section-text__article-body p,
+  .section-text__article-text {
+    font-size: 19.6px;
+  }
+
+  .section-articles__cont {
+    padding-top: 53px;
+  }
+}
+
+@media (max-width: 550px) {
+  .section-text__article-body p,
+  .section-text__article-text {
+    font-size: 18px;
+  }
+}
+

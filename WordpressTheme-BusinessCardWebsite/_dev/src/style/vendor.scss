@@ -1,0 +1,10 @@
+@import "variables.scss";
+
+$lg-path-fonts: $public-path + '/fonts'!default;
+$lg-path-images: $public-path + '/img'!default;
+$slick-font-path: $public-path + '/fonts/' !default;
+$slick-loader-path: $public-path + '/' !default;
+
+@import '~slick-carousel/slick/slick.scss';
+@import '~slick-carousel/slick/slick-theme.scss';
+@import '~lightgallery/src/sass/lightgallery.scss';

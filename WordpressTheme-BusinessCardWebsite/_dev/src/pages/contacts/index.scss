@@ -1,0 +1,130 @@
+@import "../../style/variables.scss";
+
+.section-about-me {
+
+  &__cont {
+    @include section-cont;
+    background-color: $color-main-03;
+  }
+
+  &__title {
+    width: 100%;
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $breakpoint-04) {
+    flex-direction: column;
+    }
+  }
+
+  &__avatar {
+    max-width: 560px;
+    margin-top: 1.5%;
+    margin-left: -1.5%;
+    width: 35.3%;
+
+    @media (max-width: $breakpoint-04) {
+      margin-top: 50px;
+    }
+  }
+
+  &__article {
+    width: 57.5%;
+    align-self: center;
+    padding-right: 5.5%;
+
+    @media (max-width: $breakpoint-04) {
+      padding-right: 0;
+      text-align: center;
+      width: 100%;
+      max-width: 700px;
+      margin-top: 70px;
+    }
+  }
+
+  &__article-text {
+    color: $color-text-light-02;
+  }
+
+  &__subtitle {
+    margin-top: 157px;
+    margin-right: 100%;
+  }
+}
+
+.section-slider {
+
+  &__cont {
+    @include section-cont;
+    background-color: #404040;
+  }
+
+  &__slider {
+    width: 100%;
+    margin-top: 77px;
+  }
+
+  &__slide {
+    background-image: url($public-path + '/img/document_01.jpg');
+
+    &:after {
+      padding-top: 91%;
+    }
+  }
+}
+
+.section-articles {
+
+  &__cont {
+    background-color: $color-main-03;
+    padding-top: $pad-top-01;
+    padding-bottom: 160px;
+
+    @media (max-width: $breakpoint-03) {
+      padding-bottom: 50px;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: $pad-top-02;
+      padding-bottom: 108px;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      padding-top: $pad-top-04;
+      // padding-bottom: 108px;
+    }
+  }
+
+  &__articles {
+    // margin-top: 50px;
+
+    @media (max-width: $breakpoint-03) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+      // margin-top: 35px;
+    }
+  }
+}
+
+.section-advice {
+
+  &__cont {
+    @include section-cont;
+    background-color: #404040;
+  }
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__form {
+    margin-top: 20px;
+    margin-bottom: 27px;
+  }
+}

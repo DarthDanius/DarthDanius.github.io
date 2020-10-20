@@ -1,0 +1,115 @@
+@import "../../style/variables.scss";
+
+.section-text {
+
+  &__cont {
+    @include section-cont;
+    background-color: $color-main-03;
+  }
+
+  &__title {
+    width: 100%;
+  }
+
+  &__article-text,
+  &__article-body p {
+    color: $color-text-light-02;
+    font-family: BravoRG;
+    font-style: normal;
+    font-weight: normal;
+    @include setFontSize(26px, 18px);
+    letter-spacing: 0.04em;
+  }
+
+  &__subtitle {
+    margin-top: 157px;
+    margin-right: 100%;
+  }
+}
+
+.section-articles {
+
+  &__cont {
+    background-color: $color-main-03;
+    padding-top: $pad-top-01;
+    padding-bottom: 160px;
+
+    @media (max-width: $breakpoint-03) {
+      padding-bottom: 50px;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+      padding-top: $pad-top-02;
+      padding-bottom: 108px;
+    }
+
+    @media (max-width: $breakpoint-05) {
+      padding-top: $pad-top-04;
+      // padding-bottom: 108px;
+    }
+  }
+
+  &__articles {
+
+    @media (max-width: $breakpoint-03) {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: $breakpoint-02-5) {
+    }
+  }
+}
+
+.section-slider {
+
+  &__cont {
+    @include section-cont;
+    background-color: #404040;
+  }
+
+  &__slider {
+    width: 100%;
+    margin-top: 77px;
+  }
+
+  &__slide {
+    background-image: url($public-path + '/img/document_01.jpg');
+
+    &:after {
+      padding-top: 91%;
+    }
+  }
+}
+
+.section-how-work {
+
+  &__cont {
+    @include section-cont;
+    background-color: #404040;
+  }
+
+  &__title {
+    margin-top: 57px;
+  }
+
+  &__graf {
+    margin-top: 50px;
+  }
+}
+
+.section-advice {
+
+  &__cont {
+    @include section-cont;
+    background-color: #404040;
+  }
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__form {
+    margin-top: 20px;
+    margin-bottom: 27px;
+  }
+}

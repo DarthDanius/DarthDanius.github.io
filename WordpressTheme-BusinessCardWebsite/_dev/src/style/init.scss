@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;  
+  // font-size: 35px;// 320p - 26px
+  @include setFontSize(35px, 20px);
+  font-family: 'BravoRG';
+  font-weight: normal;
+  line-height: $line-height;
+  letter-spacing: 0.04em;
+  // background: #404040;
+}
+
+body {
+  height: 100%;
+  min-width: 318px;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+
+  &:active,
+  &:focus {
+    outline: none !important;;
+  }
+  &::-moz-focus-inner {
+    border: 0px !important;;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+body svg {
+  fill-rule: evenodd;
+}
+
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  border: none;
+  background: none;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+h1 {
+  font-family: 'BravoSC';
+  letter-spacing: 0.02em;
+  font-weight: normal;
+  @include setFontSize(110px, 58px);
+}
+
+h2 {
+  font-family: 'BravoSC';
+  @include setFontSize(82px, 46px);
+  letter-spacing: 0.02em;
+  font-weight: normal;
+}
+
+h3 {
+  font-family: 'BravoSC';
+  @include setFontSize(62px, 34px);
+  letter-spacing: 0.02em;
+  font-weight: normal;
+}
+
+h4 {
+  font-family: 'BravoRG';
+  @include setFontSize(46px, 26px);
+  letter-spacing: 0.04em;
+  font-weight: normal;
+}
+
+h5 {
+  font-family: 'BravoRG';
+  @include setFontSize(35px, 20px);
+  letter-spacing: 0.04em;
+  font-weight: normal;
+}
+
+h6 {
+  font-family: 'BravoRG';
+  @include setFontSize(26px, 12px);
+  letter-spacing: 0.004em;
+  font-weight: normal;
+}.content {
+  // overflow-x: hidden;
+
+  &_unscroll {
+    overflow-y: hidden;
+  }
+}
+
+.fixed-container{
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  // background-color: #E1E1E1;
+  position: relative;
+  @include setPadSide;
+}
+
+.system {
+
+  &__slidebar {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $color-main-04;
+  }
+}

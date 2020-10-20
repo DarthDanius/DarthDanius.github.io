@@ -1,0 +1,7 @@
+.vscode
+design
+node_modules
+vendor
+*.7z
+*.rar
+*.zip

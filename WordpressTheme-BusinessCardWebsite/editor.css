@@ -1,0 +1,21 @@
+.editor-post-title__block .editor-post-title__input,
+.edit-post-visual-editor, .edit-post-visual-editor p {
+ font-family: "Open Sans", sans-serif;
+}
+.editor-post-title__block .editor-post-title__input {
+  font-family: BravoSC;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: .02em;
+  text-align: center;
+  font-size: 82px;
+}
+
+.edit-post-visual-editor, .edit-post-visual-editor p,
+.editor-rich-text__tinymce.mce-content-body {
+  font-size: 35px;
+  font-family: BravoRG;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: .04em;
+}

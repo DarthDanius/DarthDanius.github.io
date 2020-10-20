@@ -1,0 +1,62 @@
+input[type=button] {
+  background-color: pink;
+  border: 1px solid orange;
+  color: #000;
+  font-size: 25px;
+  height: 54px;
+  margin: 15px;
+  width: 250px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Roboto;
+  min-width: 320px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body svg {
+  fill-rule: nonzero;
+}
+
+button {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-box-shadow: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.fixed-container {
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+  background-color: #faebd7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 25px;
+}
+

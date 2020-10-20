@@ -1,0 +1,169 @@
+.section-about-me__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-about-me__title {
+  width: 100%;
+}
+
+.section-about-me__group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.section-about-me__avatar {
+  max-width: 560px;
+  margin-top: 1.5%;
+  margin-left: -1.5%;
+  width: 35.3%;
+}
+
+.section-about-me__article {
+  width: 57.5%;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-right: 5.5%;
+}
+
+.section-about-me__article-text {
+  color: #fff;
+}
+
+.section-about-me__subtitle {
+  margin-top: 157px;
+  margin-right: 100%;
+}
+
+.section-slider__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-slider__slider {
+  width: 100%;
+  margin-top: 77px;
+}
+
+.section-slider__slide {
+  background-image: url(../img/document_01.jpg);
+}
+
+.section-slider__slide:after {
+  padding-top: 91%;
+}
+
+.section-articles__cont {
+  background-color: #404040;
+  padding-top: 100px;
+  padding-bottom: 160px;
+}
+
+.section-advice__cont {
+  position: relative;
+  padding-bottom: 25px;
+  padding-top: 100px;
+  background-color: #404040;
+}
+
+.section-advice__title {
+  margin-top: 10px;
+}
+
+.section-advice__form {
+  margin-top: 20px;
+  margin-bottom: 27px;
+}
+
+@media (max-width: 1559px) {
+  .section-about-me__cont {
+    padding-top: 85px;
+  }
+
+  .section-about-me__cont {
+    padding-top: 70px;
+  }
+
+  .section-slider__cont {
+    padding-top: 85px;
+  }
+
+  .section-slider__cont {
+    padding-top: 70px;
+  }
+
+  .section-articles__cont {
+    padding-top: 146px;
+    padding-bottom: 108px;
+  }
+
+  .section-advice__cont {
+    padding-top: 85px;
+  }
+
+  .section-advice__cont {
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 1275px) {
+  .section-articles__cont {
+    padding-bottom: 50px;
+  }
+
+  .section-articles__articles {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section-about-me__cont {
+    padding-top: 50px;
+  }
+
+  .section-about-me__group {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .section-about-me__avatar {
+    margin-top: 50px;
+  }
+
+  .section-about-me__article {
+    padding-right: 0;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 70px;
+  }
+
+  .section-slider__cont {
+    padding-top: 50px;
+  }
+
+  .section-advice__cont {
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 790px) {
+  .section-articles__cont {
+    padding-top: 53px;
+  }
+}
+

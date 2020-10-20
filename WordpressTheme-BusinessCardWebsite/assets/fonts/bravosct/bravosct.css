@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'BravoSCT';
+	src: url('../fonts/bravosct.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/bravosct.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/bravosct.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/bravosct.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/bravosct.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/bravosct.svg#bravosct') format('svg'); /* Chrome < 4, Legacy iOS */
+}

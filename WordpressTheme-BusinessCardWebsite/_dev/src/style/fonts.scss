@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'BravoRG';
+  font-style: normal;
+  font-weight: 400;
+  src: 
+    url($public-path + '/fonts/bravorg/bravorg.woff2') format('woff2'),
+    url($public-path + '/fonts/bravorg/bravorg.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'BravoSC';
+  font-style: normal;
+  font-weight: 400;
+  src: 
+    url($public-path + '/fonts/bravosc/bravosc.woff2') format('woff2'),
+    url($public-path + '/fonts/bravosc/bravosc.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'BravoSCT';
+  src:
+    url($public-path + '/fonts/bravosct/bravosct.woff2') format('woff2'),
+    url($public-path + '/fonts/bravosct/bravosct.woff') format('woff')
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src:
+    local('ubuntu'),
+    url($public-path + '/fonts/ubuntu/ubuntu.woff2') format('woff2'),
+    url($public-path + '/fonts/ubuntu/ubuntu.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
