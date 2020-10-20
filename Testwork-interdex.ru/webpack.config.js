@@ -32,7 +32,7 @@ const base = {
     path: PATHS.dist,
     filename: `${PATHS.scripts}/[name].js`,
     sourceMapFilename: `${PATHS.scripts}/[name].js.map`,
-    publicPath: '/',
+    publicPath: '',
     // library: 'webpackVariable'
   },
 
