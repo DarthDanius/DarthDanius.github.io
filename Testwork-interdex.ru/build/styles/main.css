@@ -1004,6 +1004,7 @@ img {
   display: -ms-flexbox;
   display: flex;
   padding-left: 120px;
+  height: 100%;
 }
 
 .menu__content {

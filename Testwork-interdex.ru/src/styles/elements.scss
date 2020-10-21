@@ -119,6 +119,7 @@
   &__container-content {
     display: flex;
     padding-left: 120px;
+    height: 100%;
 
     @media (max-width: $bp-small) {
       justify-content: center;
