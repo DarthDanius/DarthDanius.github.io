@@ -26,20 +26,6 @@
     padding-left: 18px;
     padding-right: 18px;
   }
-
-  &__title {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  &__handler {
-    margin-top: 32px;
-  }
-
-  &__slider {
-  }
 }
 
 .section-last-minute-tours {
@@ -48,9 +34,18 @@
     padding-top: 38px;
   }
 
-  .section__slider {
-    padding-top: 17px;
+  &__handler {
+    margin-top: 32px;
   }
+
+  &__slider {
+    padding-top: 17px;
+
+    @media (max-width: $bp-small) {
+      display: none;
+    }
+  }
+
   .slick-next, .slick-prev {
     top: calc(50% - 30px);
   }
@@ -62,7 +57,7 @@
     padding-top: 16px;
   }
 
-  .section__slider {
+  &__slider {
     margin-top: 46px;
 
     @media (max-width: $bp-small) {
@@ -71,6 +66,7 @@
       padding-bottom: 16px;
     }
   }
+  
   .slick-next, .slick-prev {
     top: calc(50% - 24px);
   }
@@ -88,6 +84,7 @@
       font-size: 36px;
       font-weight: 900;
       text-align: center;
+      text-transform: none;
 
       @media (max-width: $bp-small) {
         text-align: left;
@@ -123,27 +120,45 @@
   &__bottom {
     position: relative;
     padding-left: 120px;
+    overflow: hidden;
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(white, white);
 
     @media (max-width: $bp-small) {
       padding-left: 62px;
     }
   }
 
-  &__top::after,
-  &__bottom::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background: url("../img/footer-stroke.svg");
-    background-repeat: no-repeat;
-    background-size: 929px 100%;
-    width: 100%;
-    height: 100%;
+  &__top {
+    background-position: 53px bottom;
   }
 
-  &__bottom::after {
-    transform: scale(1, -1);
+  &__bottom {
+    background-position: 53px top;
+  }
+
+  &__top::before,
+  &__bottom::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: -1px;
+    width: 100px;
+    height: 5px;
+    background-image: linear-gradient(to left, white, white);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 100% 10px;
+    transform-origin: left bottom;
+    transform: rotate(52deg);
+  }
+
+  &__bottom::before {
+    transform-origin: left top;
+    transform: rotate(-52deg);
+    top: auto;
+    bottom: -4px;
   }
 
   &__middle {
@@ -151,6 +166,8 @@
   }
 
   &__link {
-    padding: 20px 0;
+    margin: 20px 0;
+    position: relative;
+    z-index: 1;
   }
 }

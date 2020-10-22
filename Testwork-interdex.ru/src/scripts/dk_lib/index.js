@@ -12,6 +12,17 @@ export async function animHandler($el, ...cls) {// animHandler( element || $elem
   })
 };
 
+export function touchAvailable(setDataTouch = false) {
+  const touch = ( ('ontouchstart' in window || ( window.DocumentTouch && document instanceof DocumentTouch) ) ) ? true : false;
+  if ( setDataTouch ) {
+    if ( !touch ) {
+      console.log('событие touch недоступно');
+      $('body')[0].dataset.touch = "false"
+    } else console.log('событие touch доступно');
+  }
+  return touch;
+}
+
 export function replaceClass(el, replaceableClass, replacementClass, revers=false) {
   if (!el) return
   if (el.jquery) el = el[0];
@@ -19,7 +30,7 @@ export function replaceClass(el, replaceableClass, replacementClass, revers=fals
   if (replaceableClass !== '') el.classList.remove(replaceableClass);
   if (replacementClass !== '') el.classList.add(replacementClass);
 }
-let name
+
 export function setEventDelay(arg, f, ms, init=false, ...args) { // задержка для функции. init = true выполнить функцию до установки таймера.
   let timer = null;
   function eventToArgs(e, args){
@@ -31,7 +42,7 @@ export function setEventDelay(arg, f, ms, init=false, ...args) { // задерж
     }
   }
   function executor(e) {
-    console.log(f.name + e.type)
+    // console.log(f.name + e.type)
 
     if (!timer) {
       if (init) {

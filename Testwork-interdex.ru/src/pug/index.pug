@@ -3,11 +3,11 @@ html(lang='ru')
   head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no')
-    link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap' rel='stylesheet')
     title interdex.ru test
   body
     .content
       .container-fixed
+      
         header.header
           .header__menu.menu(data-type='slide-menu-container')
             .menu__container-fixed
@@ -100,25 +100,37 @@ html(lang='ru')
                         button.form-menu__btn.menu__btn.btn.btn_border Найти
                       nav.menu__nav.nav
                         ul.nav__list
-                          li.nav__item ПУТЕШЕСТВИЯ
-                          li.nav__item О НАС
-                          li.nav__item ОТЗЫВЫ
-                          li.nav__item БЛОГ
+                          li.nav__item
+                            a.nav__link(href="#") ПУТЕШЕСТВИЯ
+                          li.nav__item
+                            a.nav__link(href="#") О НАС
+                          li.nav__item
+                            a.nav__link(href="#") ОТЗЫВЫ
+                          li.nav__item
+                            a.nav__link(href="#") БЛОГ
                       a.menu__link-tel(href='tel:+78001234567') 8 (800) 123-45-67
                       button.menu__btn.btn.btn_border Подберите мне тур
-        section.section.section-last-minute-tours
-          h2.section__title Горящие туры
-          ul#handler-sort.section__handler.handler.hide
-          #slider-main.section__slider.slider.slider_main(data-slider='')
+
+        section.section-last-minute-tours.section
+          h2.section-last-minute-tours__title.title.title_h2 Горящие туры
+          ul#handler-sort.section-last-minute-tours__handler.handler.hide
+          .section-last-minute-tours__slider.slider.slider_main
+            .slider__container-resize.container-resize.load(data-type="container-resize")
+              #slider-main.slider__container-content(data-type="slider-slick")
           .section-last-minute-tours__content-mobile.content-mobile
-            .content-mobile__container
-              #content-mobile.content-mobile__content
+            .content-mobile__container-position
+              .content-mobile__container-resize.container-resize.load(data-type="container-resize")
+                #content-mobile.content-mobile__content
               button#load-more.content-mobile__btn.btn.btn_yellow Загрузить еще
-        section.section.section-popular-tours
-          h2.section__title Популярные туры
-          #slider-secondary.section__slider.slider.slider_secondary(data-slider='')
-        section.section.section-form
-          h2.section-form__title Заявка на подбор путешествия
+
+        section.section-popular-tours.section
+          h2.section-popular-tours__title.title.title_h2 Популярные туры
+          .section-popular-tours__slider.slider.slider_secondary
+            .slider__container-resize.container-resize.load(data-type="container-resize")
+              #slider-secondary.slider__container-content(data-type="slider-slick")
+
+        section.section-form.section
+          h2.section-form__title.title.title_h2 Заявка на подбор путешествия
           form#form.section-form__form.form(action='#')
             h3.form__title немного о вас
             .form__container-row

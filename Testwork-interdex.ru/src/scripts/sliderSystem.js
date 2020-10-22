@@ -22,7 +22,8 @@ class SliderSystem {
       classHandlerItem: 'handler__item',
       classActive: "active",
       classDisabled: "disabled",
-      classHide: "hide"
+      classHide: "hide",
+      animateDecorator: null
     }
     this.options = {...this.optionsDefault, ...sliderSystemOpt}
     this.optionsCurrent = null
@@ -35,6 +36,11 @@ class SliderSystem {
     })
     this.previousBreakpoint = null
     this.visibleSlides = this.$slider.children()
+
+    console.log('this.options.animateDecorator', this.options.animateDecorator)
+    // console.log('this.options', this.options)
+
+    if (this.options.animateDecorator) this.initSliderSystem = this.options.animateDecorator(this.initSliderSystem, $sliderContainer)
 
     const init = () => {
       // console.info('init')

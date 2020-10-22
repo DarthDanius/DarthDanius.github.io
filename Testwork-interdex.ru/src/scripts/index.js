@@ -5,20 +5,22 @@ import { Validator } from './dk_validator';
 import { PopUp } from './dk_popup';
 import { DropDownList } from './dk_dropDownList';
 import { setEventDelay, animHandler, replaceClass, wait, log } from './dk_lib';
-import { Scroll } from './dk_toggleHideScroll';
+import { systemScroll } from './dk_toggleHideScroll';
+import { animResizeCont } from './dk_animate';
 import SimpleBar from 'simplebar';
 import 'simplebar/dist/simplebar.css';
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime';
 
 SimpleBar.removeObserver()
 
-const scroll = new Scroll();
+const scroll = systemScroll;
 
 const MEDIA_MOBILE = 768 - 1
 
 const SLIDER_SYSTEM_OPTIONS_MAIN = {
   size: 4,
   $handlerCont: $('#handler-sort'),
+  animateDecorator: animResizeCont,
   slick: {
     infinite: false,
     zIndex: 5,
@@ -199,7 +201,7 @@ function formInit(setting={}) {
     
     if (valid) {
       popup.show();
-      popup.insert(`<div class="popup__loader loader"></div>`)
+      popup.insert(`<div class="popup__loader load"></div>`)
       const message = `
       <p class="popup__message">Данные успешно выведены в консоль</p>
       <div class="popup__ok ok"></div>
@@ -222,10 +224,11 @@ async function getJsonData() {
   }
 }
 
-function createSlide(data, type = 'main'){
+function createSlide(data, type = 'main', className = ''){
   const {image, price, teg, title, route, description, accent} = data
   let $image, $price, $teg, $title, $route, $description, $accent;
   const $slide = $(`<div class="slider__slide" data-slide></div>`)
+  if (className) $slide.addClass(className)
   const $imageContSize = $(`<div class="slider__image-cont-size"></div>`)
   $slide.append($imageContSize)
   const $imageContPosition = $(`<div class="slider__image-cont-position"></div>`)
@@ -275,12 +278,11 @@ function createSlide(data, type = 'main'){
     // </div>
 }
 
-function getSliders(data, count, options) {
-
-  const {$container, $button} = options
+function pushSlides(data, count=1, options) {
+  const {$containerContent, $button} = options
   const subarrays = [];
   let counter = 0;
-  for (let i = 0; i <Math.ceil(data.length/count); i ++){
+  for (let i = 0; i < Math.ceil(data.length/count); i++){
     subarrays[i] = data.slice( i*count, i*count + count );
   }
 
@@ -288,15 +290,13 @@ function getSliders(data, count, options) {
     if (subarrays[counter]) {
       subarrays[counter].forEach( data => {
         let $slide = createSlide(data, 'main')
-        $container.append($slide)
+        $containerContent.append($slide)
       })
       if (!subarrays[counter + 1]) $button.addClass('disabled')
       counter++
     }
   }
-  executor()
   return executor
-
 }
 
 $(document).ready(()=>{
@@ -310,30 +310,46 @@ $(document).ready(()=>{
       const slidesSecondary = []
       const $sliderSecondary = $('#slider-secondary');
 
+      $sliderMain.parent('[data-type="container-resize"]').css({'height': 300, 'overflow': 'hidden'})
       data.forEach( slideData => {
         const slide = createSlide(slideData, 'main')
         slidesMain.push(slide)
         $sliderMain.append(slide)
       })
+      $sliderMain.parent('.load').removeClass('load')
 
+      $sliderSecondary.parent('[data-type="container-resize"]').css({'height': 300, 'overflow': 'hidden'})
       data.forEach( slideData => {
         const slide = createSlide(slideData, 'secondary')
         slidesSecondary.push(slide)
         $sliderSecondary.append(slide)
       })
+      $sliderSecondary.parent('.load').removeClass('load')
     
       let sliderSystemMain = new SliderSystem($sliderMain, SLIDER_SYSTEM_OPTIONS_MAIN);
       let sliderSystemSecondary = new SliderSystem($sliderSecondary, SLIDER_SYSTEM_OPTIONS_SECONDARY);
+      // let unvisibleSlides = slidesMain.concat(slidesSecondary)
+      // unvisibleSlides.forEach( item => {
+      //   item.removeClass('none')
+      // })
+      // console.log(unvisibleSlides)
 
-      const $contentMobileButton = $('#load-more')
-      const $contentMobileContainer = $('#content-mobile')
-      $contentMobileButton.click(getSliders(data, 3, {$container: $contentMobileContainer, $button: $contentMobileButton}))
-
+      const $mobileButton = $('#load-more')
+      const $mobileContainer = $('#content-mobile')
+      let addSlides = pushSlides(data, 3, 
+        { $containerContent: $mobileContainer,
+          $button: $mobileButton
+        })
+      addSlides = animResizeCont(addSlides, $mobileContainer)
+      addSlides()
+      $mobileContainer.parent('.load').removeClass('load')
+      $mobileButton.click(addSlides)
     })
     .catch( err => console.error(err) )
 
   // форма
   formInit();
+
   // меню
   const menu = menuInit();
   menu.simplebar = new SimpleBar(menu.$content_container_scroll[0], {autoHide: false})
@@ -348,7 +364,7 @@ $(document).ready(()=>{
   
   dropDown.elements.forEach( (item, index) => {
     item.simplebar = new SimpleBar(item.$listContainerScroll[0], 
-    { 
+    {
       autoHide: false,
       classNames: {
         scrollbar: 'drop-down__scrollbar'

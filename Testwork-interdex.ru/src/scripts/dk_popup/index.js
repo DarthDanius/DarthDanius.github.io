@@ -1,9 +1,9 @@
-import { Scroll } from '../dk_toggleHideScroll';
+import { systemScroll } from '../dk_toggleHideScroll';
 
 export class PopUp{
   constructor( el, setting={} ){
 
-    const scroll = new Scroll;
+    const scroll = systemScroll;
 
     this.defaultSetting = {
       classContainer: 'popup__container',
@@ -42,6 +42,5 @@ export class PopUp{
     this.append = function($el){
       this.window.append($el);
     }
-    // this.insert = this.insert.bind(this)
   }
 }

@@ -132,6 +132,10 @@ const dev = {
 
   mode: 'development',
 
+  output: {
+    publicPath: '/',
+  },
+
   devServer: {
     port: 8080,
     overlay: {

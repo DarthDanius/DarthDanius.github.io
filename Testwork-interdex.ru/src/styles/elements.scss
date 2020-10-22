@@ -20,13 +20,26 @@
   opacity: 0 !important;
 }
 
+.none {
+  display: none
+}
+
 .tabulation {
   margin-left: 6px;
 }
 
-.loader {
-  background: url("../img/Spinner-1s-200px.svg") no-repeat center;
-  background-size: contain;
+.load {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url("../img/Spinner-1s-200px.svg") no-repeat center;
+    background-size: 100px 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
 }
 
 .ok {
@@ -50,7 +63,6 @@
   padding-left: 15px;
   padding-right: 15px;
   max-width: 300px;
-  // margin: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,11 +87,17 @@
 
   &_yellow {
     background-color: $color-yellow;
+    &:hover  {
+      filter: brightness(0.9);
+    }
   }
 
   &_border {
     background-color: $color-yellow;
     border: 1px solid black;
+    &:hover  {
+      filter: brightness(0.9);
+    }
   }
 }
 
@@ -319,6 +337,7 @@
     width: 100px;
     height: 100px;
     align-self: center;
+    position: relative;
   }
 
   &__ok {
@@ -565,9 +584,6 @@
   }
 
   &_main {
-    @media (max-width: $bp-small) {
-      display: none;
-    }
   }
 
   &_secondary {
@@ -837,18 +853,24 @@
     display: flex;
   }
 
-  &__container {
-    display: none;
+  &__container-position {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     border-top: 2px solid #C4C4C4;
     border-bottom: 2px solid #C4C4C4;
     padding-bottom: 24px;
+    padding-top: 30px;
+  }
+
+  &__container-resize {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
   }
 
   &__content {
-    padding-top: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -862,7 +884,7 @@
   &__btn {
     width: 280px;
     align-items: flex-start;
-    padding-top: 4%;
+    padding-top: 3%;
 
     &::before {
       left: 50%;
@@ -870,5 +892,24 @@
       transform: translateY(0) rotate(90deg);
       top: auto;
     }
+  }
+}
+
+.container-resize {
+  position: relative;
+  width: 100%;
+  min-height: 150px;
+  // overflow: hidden;
+  transition-property: height;
+  transition-duration: $time-medium;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+
+  &_h2 {
+    font-size: 36px;
+    font-weight: 700;
   }
 }
