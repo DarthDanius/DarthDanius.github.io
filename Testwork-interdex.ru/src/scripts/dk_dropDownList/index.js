@@ -74,7 +74,6 @@ export class DropDownList { // use jquery
       createDropDownList(item, this.options, this).insertAfter(item.$input)
     })
 
-    // const toggleClass = async (e) => {
     async function toggleClass(e) {
       if (this.status !== 'changes'){
         // закрыть открытые
@@ -98,10 +97,6 @@ export class DropDownList { // use jquery
     toggleClass = toggleClass.bind(this)
 
     $(document).click( e => toggleClass(e) )
-
-    // wait( () => {
-    //   $(document).click( async e => toggleClass(e) )
-    // })
 
     function pushElement(input) {
       const $input = $(input);
