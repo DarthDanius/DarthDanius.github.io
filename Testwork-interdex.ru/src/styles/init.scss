@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:focus {
+  @include focus;
+}
+
 html {
   height: 100%;  
   line-height: 1.15; /* 1 */
@@ -28,10 +32,10 @@ a {
   user-select: none;
   background-color: transparent;
 
-  &:active,
-  &:focus {
-    outline: none !important;;
-  }
+  // &:active,
+  // &:focus {
+  //   outline: none !important;;
+  // }
   &::-moz-focus-inner {
     border: 0px !important;;
   }
@@ -55,10 +59,10 @@ button, input {
   cursor: pointer;
   white-space: nowrap;
 
-  &:active,
-  &:focus {
-    outline: none;
-  }
+  // &:active,
+  // &:focus {
+  //   outline: none;
+  // }
   &::-moz-focus-inner {
     border: 0;
   }

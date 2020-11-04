@@ -14,15 +14,19 @@
   position: relative;
   white-space: nowrap;
 
+  & :focus {
+    outline: none;
+  }
+
   &__button {
     width: 100%;
     height: $button-height;
     background-repeat: no-repeat;
     background-image: url(../img/icon_arrow.svg);
     background-position: calc(100% - 15px) 50%;
+    // background-color: rgba(255,210,65, 0.5);
     border-radius: 24px;
     background-size: 10px auto;
-    background-color: white;
     text-align: start;
     font-family: inherit;
     font-size: 12px;
@@ -34,24 +38,36 @@
     padding-right: 30px;
     transition-property: width, left;
     transition-duration: $time-nav-anim;
+    z-index: 1;
   }
 
   &__list-container-position {
+    $border-width: 1px;
+
     position: absolute;
     height: $button-height;
     width: 100%;
+    padding-top: $button-height - $border-width * 2;
     top: 0;
     left: 0;
     background-color: white;
     border-radius: 24px;
-    transition-property: height, opacity, padding;
+    transition-property: width, height, left, opacity, padding;
     transition-duration: $time-nav-anim;
-    z-index: -1;
+    border: $border-width solid transparent;
+    z-index: 0;
+
+    &:focus {
+      @include focus;
+    }
+
+    &_checked {
+      border-color: green;
+    }
   }
 
   &__list-container-scroll {
     height: 100%;
-    // overflow: hidden;
 
     & > .simplebar-vertical {
       right: 10px;
@@ -79,12 +95,29 @@
 
   &__item {
     cursor: pointer;
+    position: relative;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 300;
 
-    &:hover {
+    &:hover,
+    &_focusable,
+    &:focus {
       background-color: #EEEEEE;
+    }
+
+    &_selected {
+
+      &::before {
+        content: '';
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background: url("../img/ok.svg") no-repeat center;
+        background-size: contain;
+        top: 7px;
+        left: -20px;
+      }
     }
   }
 
@@ -123,12 +156,6 @@
     .drop-down__item {
       padding: 6px 13px;
     }
-
-    // simplebar-scrollbar
-    // .simplebar-scrollbar::before {
-    //   // opacity: 1;
-    //   visibility: visible;
-    // }
   }
 
   &_scroll {

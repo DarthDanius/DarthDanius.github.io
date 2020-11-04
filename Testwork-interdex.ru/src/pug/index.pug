@@ -84,7 +84,7 @@ html(lang='ru')
                           label.form-menu__label.hide(for='date-begin') Даты
                           .form-menu__calendar
                             input#date-begin.form-menu__input.form-menu__input_data(type='date' name='date-begin' data-input='date-begin')
-                            input#date-end.form-menu__input.form-menu__input_data.hide(type='date' name='date-end' data-input='date-end')
+                            input#date-end.form-menu__input.form-menu__input_data.hide(type='date' name='date-end' data-input='date-end' tabindex='-1')
                         .form-menu__container
                           label.form-menu__label(for='type-of-travel') Тип путешествия
                           select#type-of-travel.form-menu__input.form-menu__input_select(name='type-of-travel' data-input='select')
@@ -113,7 +113,7 @@ html(lang='ru')
 
         section.section-last-minute-tours.section
           h2.section-last-minute-tours__title.title.title_h2 Горящие туры
-          ul#handler-sort.section-last-minute-tours__handler.handler.hide
+          ul#handler-sort.section-last-minute-tours__handler-sort.handler-sort.hide
           .section-last-minute-tours__slider.slider.slider_main
             .slider__container-resize.container-resize.load(data-type="container-resize")
               #slider-main.slider__container-content(data-type="slider-slick")

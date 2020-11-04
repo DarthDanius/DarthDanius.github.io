@@ -25,7 +25,7 @@ class Scroll {// use jquery, dk_lib
     this.slidebarWidth = window.innerWidth - this.$body.width();
     this.$slidebarCap.css({
       'width': this.slidebarWidth,
-      'right': -this.slidebarWidth
+      'right': 0
     });
   }
 

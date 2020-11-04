@@ -42,7 +42,6 @@ export function setEventDelay(arg, f, ms, init=false, ...args) { // задерж
     }
   }
   function executor(e) {
-    // console.log(f.name + e.type)
 
     if (!timer) {
       if (init) {
@@ -93,4 +92,81 @@ export function log(content, message = null) {
   if (!message) message = String(content);
   console.info(message)
   console.log(content)
+}
+
+export const DATA_SET_NOT_FOCUS = 'data-not-focus'
+export const FOCUSABLE_ELEMENTS_SELECTOR = `
+  a[href]:not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  area[href]:not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  input:not([disabled]):not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  select:not([disabled]):not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  textarea:not([disabled]):not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  button:not([disabled]):not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  iframe:not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  [tabindex]:not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}]),
+  [contentEditable=true]:not([tabindex='-1']):not([${DATA_SET_NOT_FOCUS}])
+`
+
+export function getFocusableElements($node) {
+  if (!$node.jquery) $node = $($node)
+  return $(FOCUSABLE_ELEMENTS_SELECTOR, $node)
+}
+
+export function disabledOuterTab($node) {
+  if (!$node.jquery) $node = $($node)
+  let focusableElements = getFocusableElements($node)
+  if (!focusableElements.length) focusableElements.push($node[0])
+  let currentIndex = 0
+  let lastIndex = focusableElements.length - 1
+  let init = false
+  let previousFocus
+  let focusable = $node.is(FOCUSABLE_ELEMENTS_SELECTOR)
+
+  function next() {
+    (currentIndex === lastIndex) ? currentIndex = 0 : ++currentIndex
+    focusableElements[currentIndex].focus()
+    return focusableElements[currentIndex]
+  }
+
+  function previous() {
+    (currentIndex === 0) ? currentIndex = lastIndex : --currentIndex
+    focusableElements[currentIndex].focus()
+    return focusableElements[currentIndex]
+  }
+
+  function keydownHandler(e) {
+    if (!e.repeat && !e.shiftKey && e.code === 'Tab') {
+      e.preventDefault()
+      $(':focus')[0] ? next() : focusableElements[currentIndex].focus()
+    }
+    if (!e.repeat && e.shiftKey && e.code === 'Tab') {
+      e.preventDefault()
+      $(':focus')[0] ? previous() : focusableElements[currentIndex].focus()
+    }
+  }
+
+  function clickHandler(e) {
+    let index = focusableElements.index(e.target)
+    if (index !== -1) {
+      currentIndex = index
+    }  
+  }
+
+  return function disabledOuterTabExecutor(condition = true){
+    if (condition && !init) {
+      if ( !focusable ) $node.attr('tabindex', 0)
+      previousFocus = $(':focus')[0]
+      previousFocus?.blur()
+      init = true
+      $(document).on('keydown', keydownHandler)
+      $(document).on('mouseup', clickHandler)
+    } else if (!condition && init) {
+      if ( !focusable ) $node.removeAttr('tabindex', 0)
+      init = false
+      $(document).off('keydown', keydownHandler)
+      $(document).off('mouseup', clickHandler)
+      previousFocus?.focus()
+    }
+    return focusableElements
+  }
 }

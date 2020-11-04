@@ -164,6 +164,7 @@ export class Validator{// use jquery.maskedinput.js => jquery 3.4.x
             let handler = (e) => {
               f(e, validateHandler, field)
             }
+            console.log('validateHandler добавлен')
             field.element.addEventListener('click', handler);
           } else {
             field.element.addEventListener('change', validateHandler);
@@ -194,6 +195,14 @@ export class Validator{// use jquery.maskedinput.js => jquery 3.4.x
     field.message.addClass(field.options.validClass);
     field.accentElement.classList.add(field.options.validClass);
     field.message.addClass(field.options.messageAnimHideClass);
+  }
+
+  getIndex($node) {
+    return this.fields.findIndex( ( item, index ) => item.element === $node )
+  }
+
+  getField($node) {
+    return this.fields.find( ( item, index ) => item.element === $node )
   }
 
   validate(fields = this.fields){

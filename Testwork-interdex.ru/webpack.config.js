@@ -8,6 +8,8 @@ const CopyWebpackPlugin  = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const NODE_ENV = JSON.stringify(process.env.NODE_ENV);
 const fs = require('fs');
+// require("regenerator-runtime");
+// import 'regenerator-runtime/runtime';
 
 const PATHS = {
   dist: path.resolve(__dirname, 'build'),
@@ -60,10 +62,7 @@ const base = {
 
       {
         test: /\.(png|jpg|ttf|eot|woff|woff2)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {name: '[path][name].[ext]'}
-        }]
+        type: 'asset/resource'
       },
 
       {
@@ -85,16 +84,10 @@ const base = {
         use: {
           loader: 'babel-loader',
           options: {
-            sourceMaps: true
+            // sourceMaps: true
           }
         }
       },
-      
-      {
-        test: /\.(js|jsx)$/,
-        use: ["source-map-loader"],
-        enforce: "pre"
-     },
 
       {
         test: /\.(sa|sc|c)ss$/,

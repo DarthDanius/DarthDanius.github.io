@@ -3,50 +3,6 @@
   padding: 1px 0 !important;
 }
 
-.disabled {
-  background-color: $color-disable !important;
-}
-
-.accent {
-  color: $color-accent;
-}
-
-.hide {
-  position: absolute !important;
-  left: -10000px !important;
-  height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  opacity: 0 !important;
-}
-
-.none {
-  display: none
-}
-
-.tabulation {
-  margin-left: 6px;
-}
-
-.load {
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: url("../img/Spinner-1s-200px.svg") no-repeat center;
-    background-size: 100px 100px;
-    background-color: rgba(255, 255, 255, 0.6);
-  }
-}
-
-.ok {
-  background: url("../img/ok.svg") no-repeat center;
-  background-size: contain;
-}
-
 .icon-rub {
   height: 0.8rem;
   width: 0.8rem;
@@ -55,6 +11,10 @@
   display: inline-block;
   background-size: contain;
   margin-left: 5px;
+}
+
+.tabulation {
+  margin-left: 6px;
 }
 
 .btn {
@@ -132,6 +92,8 @@
   &__container-scroll {
     height: 100%;
     overflow: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 
   &__container-content {
@@ -151,6 +113,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2px;
+    padding-top: 2px;
   }
 
   &__btn-nav {
@@ -179,6 +143,7 @@
 
   &__btn {
     margin-top: 11px;
+    margin-bottom: 2px;
     font-size: 12px;
     font-weight: 500;
     padding: 17px 0;
@@ -433,7 +398,7 @@
   }
 }
 
-.handler {
+.handler-sort {
   $margin-bottom: 4px;
   $margin-left: 20px;
 
@@ -470,7 +435,9 @@
       clip-path: polygon(0 0, calc(100%-#{$arrow-width}) 0, 100% 50%, calc(100%-#{$arrow-width}) 100%, 0 100%);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: none;
       filter: brightness(0.9);
     }
   }
@@ -798,6 +765,11 @@
     background-position: center;
     top: 28px;
     left: calc(50% - 20px);
+  }
+
+  &__checkbox:focus + &__label::before,
+  &__checkbox-small:focus + &__label::before {
+    @include focus;
   }
 
   &__checkbox-small:checked + &__label::after {

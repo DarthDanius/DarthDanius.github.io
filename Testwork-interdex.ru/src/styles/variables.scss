@@ -49,6 +49,10 @@ $root-font-size: 35px;
 $current-font-size: 35px;
 $base-font-size-em: $current-font-size / $root-font-size;
 
+@mixin focus {
+  outline: 2px solid rgb(73, 39, 153);
+}
+
 @mixin transition-hover {
   transition-property: background-color, box-shadow, border-color, outline-color;
   transition-duration: $time-hover;
@@ -80,7 +84,7 @@ $base-font-size-em: $current-font-size / $root-font-size;
   &:focus:after,
   &:active:after {
     width: 100%;
-    background-color: $color-main-02;
+    background-color: black;
   }
 }
 

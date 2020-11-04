@@ -3,13 +3,12 @@ import '../styles/index.scss';
 import { SliderSystem } from './sliderSystem'
 import { Validator } from './dk_validator';
 import { PopUp } from './dk_popup';
-import { DropDownList } from './dk_dropDownList';
-import { setEventDelay, animHandler, replaceClass, wait, log } from './dk_lib';
+import { DroplistsSystem } from './dk_dropDownList';
+import { setEventDelay, animHandler, replaceClass, wait, disabledOuterTab } from './dk_lib';
 import { systemScroll } from './dk_toggleHideScroll';
 import { animResizeCont } from './dk_animate';
 import SimpleBar from 'simplebar';
 import 'simplebar/dist/simplebar.css';
-import 'regenerator-runtime/runtime';
 
 SimpleBar.removeObserver()
 
@@ -19,8 +18,8 @@ const MEDIA_MOBILE = 768 - 1
 
 const SLIDER_SYSTEM_OPTIONS_MAIN = {
   size: 4,
-  $handlerCont: $('#handler-sort'),
   animateDecorator: animResizeCont,
+  classHandlerItem: 'handler-sort__item',
   slick: {
     infinite: false,
     zIndex: 5,
@@ -53,7 +52,7 @@ const SLIDER_SYSTEM_OPTIONS_SECONDARY = {
   slick: {
     infinite: false,
     zIndex: 5,
-    arrows: true,
+    arrows: false,
     accessibility: true,
     draggable: true,
     centerMode: false,
@@ -65,7 +64,6 @@ const SLIDER_SYSTEM_OPTIONS_SECONDARY = {
         size: 1
       },
       slick: {
-        arrows: false,
         accessibility: false,
         centerMode: true,
         centerPadding: '39px',
@@ -74,64 +72,14 @@ const SLIDER_SYSTEM_OPTIONS_SECONDARY = {
   ]
 }
 
-const FORM_OPTIONS = {
-  options: {
-    accentSelector: '', // элемент, которому добавляются классы валидации. По умолчанию - поле.
-    accentSelector: '',
-    messageElement: 'span',
-    messageClass: 'form__message',
-    messageAnimShowClass:'',
-    messageAnimHideClass:'',
-    errorClass: 'accent',
-    validClass: 'success',
-  },
-  rules: {// список именованных наборов правил
-    name: {// именованный набор правил
-      required: {// правило
-        value: true,
-        message: 'Укажите своё имя'
-      }
-    },
-    place: {
-      required: {
-        value: true,
-        message: 'Укажите континент, страну или город'
-      }
-    },
-    phone: {
-      pattern: {
-        value: /\+7\s\(\d{3}\)\s\d{3}-\d{4}/,
-        message: 'невалидный номер',
-        mask: '+7 (999) 999-9999'
-      }
-    },
-    email: {
-      required: true,
-      pattern: {
-        value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
-        message: 'невалидный адрес e-mail'
-      }
-    },
-    "cb-consent": {
-      checked: true,
-      options: {
-        message: false,
-        parentSelector: ".form__container-checkbox-small",
-        errorClass: 'form__label_checkbox-small_accent',
-        validClass: 'success',
-        accentSelector: '.form__label_checkbox-small',
-      }
-    }
-  },
-}
-
 function menuInit(setting={}) {
-  const $menu = setting.menu || $('[data-type="slide-menu-container"]', $menu)
+  const $menu = setting.menu || $('[data-type="slide-menu-container"]').eq(0)
   const $content_container_scroll = $('.menu__container-scroll', $menu)
   const $content = setting.content || $('[data-type="slide-menu-content"]', $menu)
   const $btn = setting.btn || $('.menu__btn-nav', $menu)
   const classOpen = setting.classOpen || 'menu_open';
   scroll.add($menu);
+  let disabledOuterTabInit
 
   async function animate(){
     if (!$menu.hasClass(classOpen)) {
@@ -140,6 +88,8 @@ function menuInit(setting={}) {
       $btn.addClass('btn-nav_open');
       scroll.hide();
       await animHandler($content, () => replaceClass($content, 'slideCloseRight', 'slideOpenRight'))
+      if (!disabledOuterTabInit) disabledOuterTabInit = disabledOuterTab($menu)
+      disabledOuterTabInit(true)
     } else {
       replaceClass($menu, 'visible', 'invisible', true)
       $btn.removeClass('btn-nav_open')
@@ -147,80 +97,134 @@ function menuInit(setting={}) {
       await animHandler($content, () => replaceClass($content, 'slideCloseRight', 'slideOpenRight', true))
       $menu.removeClass(classOpen)
       scroll.show();
+      disabledOuterTabInit(false)
     }
   }
 
   $btn.click( wait(animate) )
+
   return {
-    $menu,
-    $content_container_scroll,
-    $content,
-    $button: $btn,
-    classOpen
-    }
+      $menu,
+      $content_container_scroll,
+      $content,
+      $button: $btn,
+      classOpen
+  }
 }
 
 function formInit(setting={}) {
   const $form = $("#form");
-  const cb_consent_popup = new PopUp();
-  cb_consent_popup.$popupButtonYes = $('<button class="popup__btn btn btn_yellow">согласен</button>')
-  cb_consent_popup.$popupButtonNo = $('<button class="popup__btn btn btn_yellow">не согласен</button>')
+
+  const FORM_OPTIONS = {
+    options: {
+      accentSelector: '', // элемент, которому добавляются классы валидации. По умолчанию - поле.
+      accentSelector: '',
+      messageElement: 'span',
+      messageClass: 'form__message',
+      messageAnimShowClass:'',
+      messageAnimHideClass:'',
+      errorClass: 'accent',
+      validClass: 'success',
+    },
+    rules: {// список именованных наборов правил
+      name: {// именованный набор правил
+        required: {// правило
+          value: true,
+          message: 'Укажите своё имя'
+        }
+      },
+      place: {
+        required: {
+          value: true,
+          message: 'Укажите континент, страну или город'
+        }
+      },
+      phone: {
+        pattern: {
+          value: /\+7\s\(\d{3}\)\s\d{3}-\d{4}/,
+          message: 'невалидный номер',
+          mask: '+7 (999) 999-9999'
+        }
+      },
+      email: {
+        required: true,
+        pattern: {
+          value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
+          message: 'невалидный адрес e-mail'
+        }
+      },
+      "cb-consent": {
+        checked: true,
+        options: {
+          message: false,
+          parentSelector: ".form__container-checkbox-small",
+          errorClass: 'form__label_checkbox-small_accent',
+          validClass: 'success',
+          accentSelector: '.form__label_checkbox-small',
+        }
+      }
+    },
+  }
+
+  const validator = new Validator($form, FORM_OPTIONS);
+  validator.form.on('submit', (e) => e.preventDefault())
+  const cb_consent = $('#cb-consent');
+
+  cb_consent.on('click', (e) => {
+    e.preventDefault()
+    popupConfirmation.show()
+  })  
+
+  
+  //create popup confirmation
+  const popupConfirmation = new PopUp({hideOnClick: false});
+  popupConfirmation.$popupButtonYes = $('<button class="popup__btn btn btn_yellow">согласен</button>')
+  popupConfirmation.$popupButtonNo = $('<button class="popup__btn btn btn_yellow">не согласен</button>')
   const $popup_text = $(`
     <p class="popup__text">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima blanditiis deserunt consectetur accusantium ullam vero quibusdam modi a alias sed? Enim reiciendis autem hic vero neque quia, porro quibusdam eum.
     </p>
   `)
   const $popup_group_row = $('<div class="popup__group-row"></div>')
-  $popup_group_row.append(cb_consent_popup.$popupButtonYes)
-  $popup_group_row.append(cb_consent_popup.$popupButtonNo)
-  cb_consent_popup.append($popup_text)
-  cb_consent_popup.append($popup_group_row)
+  $popup_group_row.append(popupConfirmation.$popupButtonYes)
+  $popup_group_row.append(popupConfirmation.$popupButtonNo)
+  popupConfirmation.append($popup_text)
+  popupConfirmation.append($popup_group_row)
+  popupConfirmation.$popupButtonYes.on('click', (e) => onClickPopupHandler(e, true))
+  popupConfirmation.$popupButtonNo.on('click', (e) => onClickPopupHandler(e, false))
 
-  FORM_OPTIONS.rules['cb-consent'].options.onClick = (e, validateHandler, field) => {
-    e.preventDefault();
-    cb_consent_popup.$popupButtonYes.click(()=>{
-      field.element.checked = true
-      validateHandler(e)
-      cb_consent_popup.hide()
-    })
-    cb_consent_popup.$popupButtonNo.click(()=>{
-      field.element.checked = false
-      cb_consent_popup.hide()
-      validateHandler(e)
-    })
-    cb_consent_popup.show()
+  function onClickPopupHandler(e, flag) {
+    let field = validator.getField(cb_consent[0])
+    field.change = true
+    field.element.checked = Boolean(flag)
+    validator.validate()
+    popupConfirmation.hide()
   }
 
-  const validator = new Validator($form, FORM_OPTIONS);
-  validator.form.on('submit', (e) => {
-    e.preventDefault();
-  })
-  const popup = new PopUp();
-  const handler = ()=>{
-    let valid = validator.validate();
-    
-    if (valid) {
-      popup.show();
-      popup.insert(`<div class="popup__loader load"></div>`)
+  const popupSubmit = new PopUp();
+  const handler = ()=>{ 
+    if (validator.validate()) {
+      popupSubmit.show();
+      popupSubmit.insert(`<div class="popup__loader load"></div>`)
       const message = `
       <p class="popup__message">Данные успешно выведены в консоль</p>
       <div class="popup__ok ok"></div>
       `
-      setTimeout( ()=>popup.insert(message), 1000, message )
+      setTimeout( ()=>popupSubmit.insert(message), 1000, message )
     }
   }
   validator.submit.on('click', setEventDelay(null, handler, 1000, true) )
 }
 
 async function getJsonData() {
-  const url = window.location + 'data/countries.json';
+  const url = window.location.origin + '/data/countries.json';
   let response = await fetch(url);
 
   if (response.ok) {
     let json = await response.json();
     return json
   } else {
-    alert("Ошибка HTTP: " + response.status);
+    console.log("Ошибка HTTP: " + response.status);
   }
 }
 
@@ -299,9 +303,9 @@ function pushSlides(data, count=1, options) {
   return executor
 }
 
-$(document).ready(()=>{
+jQuery( ()=>{
 
-  //// слайдеры
+  // слайдеры
   const data = getJsonData()
     .then( data => {
       const slidesMain = []
@@ -326,13 +330,9 @@ $(document).ready(()=>{
       })
       $sliderSecondary.parent('.load').removeClass('load')
     
-      let sliderSystemMain = new SliderSystem($sliderMain, SLIDER_SYSTEM_OPTIONS_MAIN);
-      let sliderSystemSecondary = new SliderSystem($sliderSecondary, SLIDER_SYSTEM_OPTIONS_SECONDARY);
-      // let unvisibleSlides = slidesMain.concat(slidesSecondary)
-      // unvisibleSlides.forEach( item => {
-      //   item.removeClass('none')
-      // })
-      // console.log(unvisibleSlides)
+      const sliderSystemMain = new SliderSystem($sliderMain, SLIDER_SYSTEM_OPTIONS_MAIN);
+      const sliderSystemSecondary = new SliderSystem($sliderSecondary, SLIDER_SYSTEM_OPTIONS_SECONDARY);
+      
 
       const $mobileButton = $('#load-more')
       const $mobileContainer = $('#content-mobile')
@@ -343,7 +343,7 @@ $(document).ready(()=>{
       addSlides = animResizeCont(addSlides, $mobileContainer)
       addSlides()
       $mobileContainer.parent('.load').removeClass('load')
-      $mobileButton.click(addSlides)
+      $mobileButton.on('click', addSlides)
     })
     .catch( err => console.error(err) )
 
@@ -355,14 +355,16 @@ $(document).ready(()=>{
   menu.simplebar = new SimpleBar(menu.$content_container_scroll[0], {autoHide: false})
 
   // drop-down-list
-  const dropDown = new DropDownList($('.menu__form-menu'), 
-    {
-      expandWidthToElement: $('.form-menu').eq(0),
-      expandHeightToElement: $('.menu__link-tel').eq(0),
+  window.dropdownSystem = new DroplistsSystem($('.menu__form-menu'), 
+    { 
+      options: {
+        $expandWidthToElement: $('.form-menu').eq(0),
+        $expandHeightToElement: $('.menu__link-tel').eq(0),
+      }
     }
   );
   
-  dropDown.elements.forEach( (item, index) => {
+  dropdownSystem.droplists.forEach( (item, index) => {
     item.simplebar = new SimpleBar(item.$listContainerScroll[0], 
     {
       autoHide: false,

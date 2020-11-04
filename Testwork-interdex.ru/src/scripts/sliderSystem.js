@@ -37,9 +37,6 @@ class SliderSystem {
     this.previousBreakpoint = null
     this.visibleSlides = this.$slider.children()
 
-    console.log('this.options.animateDecorator', this.options.animateDecorator)
-    // console.log('this.options', this.options)
-
     if (this.options.animateDecorator) this.initSliderSystem = this.options.animateDecorator(this.initSliderSystem, $sliderContainer)
 
     const init = () => {
@@ -114,7 +111,7 @@ class SliderSystem {
     
     let buttons = Array.from(new Set(slides.map( slide => slide.value) )).sort();
     buttons = buttons.map(button => {
-      const $element = $(`<li class="${this.options.classHandlerItem}">${button}</li>`);
+      const $element = $(`<li class="${this.options.classHandlerItem}" tabindex="0">${button}</li>`);
       $handlerCont.append($element)
       return {
         element: $element[0],
@@ -182,11 +179,26 @@ class SliderSystem {
     } else {
       if ($handlerCont) $handlerCont.removeClass(classHide)
       this.wrapSlides(size);
+      
+      $slider.on('init reInit afterChange', this.slickHandler)
       $slider.slick(this.optionsSlickCurrent);
       $slider.slick('slickFilter', function() {
         return $(`.${classWrap}`, this).length === 1;
       });
     }
+  }
+
+  slickHandler(e, slick) {
+    // console.log(e.type)
+    if (!slick.$prevArrow) return
+    const currentSlide = slick.currentSlide
+    const lastSlide = slick.$slides.length - 1
+    const $buttonPrevious = slick.$prevArrow
+    const $buttonNext = slick.$nextArrow
+
+    $buttonPrevious.add($buttonNext).removeAttr('disabled')
+    if (currentSlide === 0) $buttonPrevious.attr('disabled', 'disabled')
+    if (currentSlide === lastSlide) $buttonNext.attr('disabled', 'disabled')
   }
 }
 

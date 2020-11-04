@@ -1,0 +1,70 @@
+{
+    "name": "interdex.ru",
+    "version": "1.0.0",
+    "description": "тестовое задание от interdex.ru",
+    "main": "index.js",
+    "scripts": {
+      "analyze": "webpack --json > stats.json && webpack-bundle-analyzer stats.json",
+      "base": "webpack --config=webpack.config.js --mode=development",
+      "build": "webpack --config=webpack.config.js --mode=production",
+      "devServer": "webpack-dev-server --config=webpack.config.js --mode=development --watch"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/DarthDanius/interdex.ru-test.git"
+    },
+    "keywords": [
+      "test"
+    ],
+    "author": "Карчуганов Данил",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/DarthDanius/interdex.ru-test/issues"
+    },
+    "homepage": "https://github.com/DarthDanius/interdex.ru-test#readme",
+    "devDependencies": {
+      "@babel/core": "^7.12.3",
+      "@babel/plugin-transform-async-to-generator": "^7.12.1",
+      "@babel/preset-env": "^7.12.1",
+      "autoprefixer": "^10.0.1",
+      "babel-loader": "^8.1.0",
+      "babel-preset-react": "^6.24.1",
+      "clean-webpack-plugin": "^3.0.0",
+      "copy-webpack-plugin": "^6.2.1",
+      "cross-env": "^7.0.2",
+      "css-loader": "^4.3.0",
+      "css-mqpacker": "^7.0.0",
+      "cssnano": "^4.1.10",
+      "dk_webpack-config-base": "^1.0.3",
+      "extract-css-chunks-webpack-plugin": "^4.8.0",
+      "file-loader": "^6.2.0",
+      "html-webpack-plugin": "^4.5.0",
+      "mini-css-extract-plugin": "^0.11.3",
+      "node-sass": "^4.14.1",
+      "postcss": "^8.1.4",
+      "postcss-loader": "^4.0.4",
+      "postcss-normalize": "^9.0.0",
+      "pug": "^3.0.0",
+      "pug-loader": "^2.4.0",
+      "sass-loader": "^10.0.4",
+      "source-map-loader": "^1.1.2",
+      "style-loader": "^1.3.0",
+      "stylefmt": "^6.0.3",
+      "terser-webpack-plugin": "^5.0.3",
+      "uglifyjs-webpack-plugin": "^2.2.0",
+      "webpack": "^4.44.2",
+      "webpack-bundle-analyzer": "^3.9.0",
+      "webpack-cli": "^3.3.12",
+      "webpack-dev-server": "^3.11.0",
+      "webpack-merge": "^5.3.0"
+    },
+    "dependencies": {
+      "@babel/polyfill": "^7.12.1",
+      "@babel/runtime": "^7.12.1",
+      "fast-async": "^7.0.6",
+      "jquery": "^3.5.1",
+      "simplebar": "^5.3.0",
+      "slick-carousel": "git+https://github.com/kenwheeler/slick.git"
+    }
+  }
+  

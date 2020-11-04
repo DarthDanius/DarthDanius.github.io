@@ -1,0 +1,41 @@
+
+.disabled,
+:disabled {
+  background-color: $color-disable;
+}
+
+.accent {
+  color: $color-accent;
+}
+
+.hide {
+  position: absolute !important;
+  left: -10000px !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+}
+
+.none {
+  display: none !important;
+}
+
+.load {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: url("../img/Spinner-1s-200px.svg") no-repeat center;
+    background-size: 100px 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.ok {
+  background: url("../img/ok.svg") no-repeat center;
+  background-size: contain;
+}
