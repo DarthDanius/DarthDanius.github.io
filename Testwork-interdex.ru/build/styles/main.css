@@ -634,7 +634,7 @@
 }
 
 .slick-loading .slick-list {
-  background: #fff url(../../img/Spinner-1s-200px.svg) 50% no-repeat;
+  background: #fff url(../img/Spinner-1s-200px.svg) 50% no-repeat;
 }
 
 .slick-next:before,
@@ -1685,6 +1685,7 @@ img {
 
 .form__input.accent {
   border-color: #cb0037;
+  color: #8c8c8c;
 }
 
 .form__checkbox {

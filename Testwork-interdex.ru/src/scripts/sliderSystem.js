@@ -151,11 +151,19 @@ class SliderSystem {
       }
     }
 
-    $handlerCont.on('click', (e) => {
+    const callbackHandler = (e) => {
       select(e.target);
       sortSlides();
       this.initSliderSystem(this.optionsCurrent);
+    }
+
+    $handlerCont.on('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault()
+        callbackHandler(e)
+      }
     })
+    $handlerCont.on('click', callbackHandler)
   }
 
   initSliderSystem(options = {size: null, $handlerCont: null}, destruct = false) {

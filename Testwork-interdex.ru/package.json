@@ -31,6 +31,7 @@
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
     "fast-async": "^6.3.8",
+    "favicons-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^1.2.1",
     "postcss": "^8.1.4",
