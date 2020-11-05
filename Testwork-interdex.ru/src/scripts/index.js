@@ -217,7 +217,7 @@ function formInit(setting={}) {
 }
 
 async function getJsonData() {
-  const url = window.location.origin + '/data/countries.json';
+  const url = window.location.origin + window.location.pathname + 'data/countries.json';
   let response = await fetch(url);
 
   if (response.ok) {

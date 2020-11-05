@@ -8,8 +8,6 @@ const CopyWebpackPlugin  = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const NODE_ENV = JSON.stringify(process.env.NODE_ENV);
 const fs = require('fs');
-// require("regenerator-runtime");
-// import 'regenerator-runtime/runtime';
 
 const PATHS = {
   dist: path.resolve(__dirname, 'build'),
@@ -51,9 +49,9 @@ const base = {
     }),
     new HtmlWebpackPlugin({
       hash: false,
-      // template: path.join( PATHS.src, 'index.html' ),
       template: path.join( PATHS.src + '/pug', 'index.pug' ),
-      filename: `.${PATHS.sep}index.html`
+      filename: `.${PATHS.sep}index.html`,
+      inject: 'head'
     }),
   ],
   
